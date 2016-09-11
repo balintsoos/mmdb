@@ -32,7 +32,11 @@ class App {
   }
 
   start(callback = () => {}) {
-    this.app.listen(this.port, callback)
+    this.app.listen(this.port, callback.bind(null, this.port))
+  }
+
+  static create(port, controllers) {
+    return new App(port, controllers)
   }
 }
 
