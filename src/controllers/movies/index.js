@@ -3,7 +3,9 @@ const Endpoints = require('../../Api/Endpoints')
 const utils = require('../../utils')
 const Store = require('../../Store')
 
-const store = new Store()
+const initialData = require('../../../data/movies')
+
+const store = new Store(initialData)
 const movies = new Endpoints(store)
 
 router.get('/', movies.getAll.bind(movies))

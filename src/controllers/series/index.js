@@ -3,7 +3,9 @@ const Endpoints = require('../../Api/Endpoints')
 const utils = require('../../utils')
 const Store = require('../../Store')
 
-const store = new Store()
+const initialData = require('../../../data/series')
+
+const store = new Store(initialData)
 const series = new Endpoints(store)
 
 router.get('/', series.getAll.bind(series))

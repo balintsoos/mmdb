@@ -1,6 +1,14 @@
 class Store {
-  constructor() {
+  constructor(initialData) {
     this.db = []
+
+    this.init(initialData)
+  }
+
+  init(initialData) {
+    initialData.forEach(item => {
+      this.createOne(item)
+    })
   }
 
   read(cb) {
@@ -15,7 +23,7 @@ class Store {
     return cb(null, this.db[id])
   }
 
-  createOne(data, cb) {
+  createOne(data, cb = () => {}) {
     this.db.push(data)
 
     return cb(null, { id: this.db.length - 1 })
