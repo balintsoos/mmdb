@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const App = require('./App')
+const Api = require('./Api')
 const nconf = require('nconf')
 const chalk = require('chalk')
 
@@ -19,7 +19,7 @@ nconf.defaults({
   PORT: 3000
 })
 
-const mmdb = new App(nconf.get('PORT'), controllers)
+const mmdb = new Api(nconf.get('PORT'), controllers)
 
 mmdb.start(port => {
   console.log(

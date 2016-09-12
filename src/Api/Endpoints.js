@@ -1,4 +1,4 @@
-class Middlewares {
+class Endpoints {
   constructor(store) {
     this.store = store
   }
@@ -34,4 +34,4 @@ class Middlewares {
   }
 }
 
-module.exports = Middlewares
+module.exports = Endpoints

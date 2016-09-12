@@ -1,10 +1,10 @@
-const router = require('../../App/router')()
-const Middlewares = require('../../Middlewares')
+const router = require('../../Api/router')()
+const Endpoints = require('../../Api/Endpoints')
 const utils = require('../../utils')
 const Store = require('../../Store')
 
 const store = new Store()
-const series = new Middlewares(store)
+const series = new Endpoints(store)
 
 router.get('/', series.getAll.bind(series))
 
