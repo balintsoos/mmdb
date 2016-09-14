@@ -1,2 +1,2 @@
-# mmdb
+# MMDb
 My Movie Database
