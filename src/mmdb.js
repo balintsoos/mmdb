@@ -11,7 +11,7 @@ const series = require('./controllers/series')
 const controllers = {
   '/': home,
   '/movies': movies,
-  '/series': series
+  '/tvshows': series
 }
 
 nconf.argv().env()
