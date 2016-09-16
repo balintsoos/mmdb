@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const compression = require('compression')
 
@@ -14,8 +15,9 @@ class Api {
   }
 
   init() {
-    this.server.use(helmet())
     this.server.use(compression())
+    this.server.use(helmet())
+    this.server.use(cors())
     this.server.use(morgan('dev'))
     this.server.use(bodyParser.json())
     this.server.use(bodyParser.urlencoded({ extended: true }))
