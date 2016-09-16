@@ -24,9 +24,13 @@ class Store {
   }
 
   createOne(data, cb = () => {}) {
-    this.db.push(data)
+    const item = Object.assign({}, data, {
+      id: this.db.length
+    })
 
-    return cb(null, { id: this.db.length - 1 })
+    this.db.push(item)
+
+    return cb(null, item)
   }
 
   static create() {
