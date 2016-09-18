@@ -6,9 +6,10 @@ const bodyParser = require('body-parser')
 const compression = require('compression')
 
 class Api {
-  constructor(port, controllers) {
+  constructor({ port, controllers, database }) {
     this.port = port
     this.controllers = controllers
+    this.database = database
 
     this.server = express()
     this.init()
@@ -29,7 +30,7 @@ class Api {
 
   addControllers(controllers) {
     Object.keys(controllers).forEach(route => {
-      this.server.use(route, controllers[route])
+      this.server.use(route, controllers[route](this.database))
     })
   }
 

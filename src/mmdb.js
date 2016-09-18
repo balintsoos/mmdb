@@ -3,23 +3,31 @@ const Api = require('./Api')
 const nconf = require('nconf')
 const chalk = require('chalk')
 
+nconf.argv().env()
+nconf.defaults({
+  PORT: 3000,
+  DATABASE_URL: 'postgres://*USERNAME*:*PASSWORD*@*HOST*:*PORT:/*DATABASE*'
+})
+
+// Database
+const { db } = require('./db')
+
 // Controllers
 const home = require('./controllers/home')
 const movies = require('./controllers/movies')
-const series = require('./controllers/series')
+const tvshows = require('./controllers/tvshows')
 
 const controllers = {
   '/': home,
   '/movies': movies,
-  '/tvshows': series
+  '/tvshows': tvshows
 }
 
-nconf.argv().env()
-nconf.defaults({
-  PORT: 3000
+const mmdb = new Api({
+  port: nconf.get('PORT'),
+  database: db,
+  controllers
 })
-
-const mmdb = new Api(nconf.get('PORT'), controllers)
 
 mmdb.start(port => {
   console.log(
