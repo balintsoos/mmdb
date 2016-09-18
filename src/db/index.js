@@ -19,7 +19,11 @@ const options = {
 
 const pgp = require('pg-promise')(options)
 
-const config = parseDbUrl(nconf.get('DATABASE_URL'))
+const dbUrl = nconf.get('DATABASE_URL')
+
+const config = Object.assign({}, parseDbUrl(dbUrl), {
+  ssl: true
+})
 
 const db = pgp(config)
 
