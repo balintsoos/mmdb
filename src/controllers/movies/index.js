@@ -1,13 +1,12 @@
 const createRouter = require('../../Api/router')
-const utils = require('../../utils')
+const get = require('../../utils/get')
 
 module.exports = db => {
   const router = createRouter()
 
-  router.get('/', db.movies.all)
+  get(router, '/', () => db.movies.all())
 
-  router.get('/:id', utils.parseId, req =>
-    db.movies.find(+req.params.id))
+  get(router, '/:id', req => db.movies.find(+req.params.id))
 
   return router
 }
