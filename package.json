@@ -5,6 +5,7 @@
   "private": true,
   "main": "src/mmdb.js",
   "dependencies": {
+    "bluebird": "3.4.6",
     "body-parser": "1.15.2",
     "chalk": "1.1.3",
     "compression": "1.6.2",
@@ -12,7 +13,9 @@
     "express": "4.14.0",
     "helmet": "2.1.3",
     "morgan": "1.7.0",
-    "nconf": "0.8.4"
+    "nconf": "0.8.4",
+    "parse-database-url": "0.3.0",
+    "pg-promise": "5.3.3"
   },
   "devDependencies": {
     "eslint": "3.5.0",
